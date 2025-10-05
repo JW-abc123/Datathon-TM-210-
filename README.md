@@ -7,12 +7,12 @@ This repository includes
 
 : academic report
 
-: data exploration+analysis file
+: data exploration+analysis file (show all analysis and pattern found)
 
 : baseline classifier to show all model that are trained based on cleaned data
 
 : xgb_opt.json for optimized model only
 
-: trained model weights
+: data_training.py for code that are used to train the model
 
 : inference file
