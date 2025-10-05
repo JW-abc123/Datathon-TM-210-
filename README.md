@@ -9,9 +9,9 @@ This repository includes
 
 : data exploration+analysis file
 
-: baseline classifier
+: baseline classifier to show all model that are trained based on cleaned data
 
-: training model file (xgb_opt.json)
+: xgb_opt.json for optimized model only
 
 : trained model weights
 
