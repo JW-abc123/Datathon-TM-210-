@@ -1,33 +1,42 @@
+import xgboost as xgb
 import pandas as pd
-import joblib
-import argparse
+import numpy as np
+import sys
 
-def main(args):
-    # 1. Load test data
-    test_data = pd.read_csv(args.input)
-    print("Test data shape:", test_data.shape)
+def load_model(model_path="xgb_opt.json"):
+    """Load a trained XGBoost model from JSON."""
+    model = xgb.Booster()
+    model.load_model(model_path)
+    return model
 
-    # 2. Load trained model
-    model = joblib.load(args.model)
-    print("Model loaded.")
-
-    # 3. Predict
-    predictions = model.predict(test_data)
-
-    # 4. Save to submission file
-    submission = pd.DataFrame({
-        "id": test_data.index,      # or test_data["id"] if you have an id column
-        "prediction": predictions
-    })
-    submission.to_csv(args.output, index=False)
-    print(f"Predictions saved to {args.output}")
+def predict(model, X):
+    """Make predictions on a Pandas DataFrame or NumPy array."""
+    dmatrix = xgb.DMatrix(X)
+    preds = model.predict(dmatrix)
+    return preds
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--model", type=str, default="gb_model.pkl", help="Path to trained model")
-    parser.add_argument("--input", type=str, default="test.csv", help="Path to input test data")
-    parser.add_argument("--output", type=str, default="submission.csv", help="Path to save predictions")
-    args = parser.parse_args()
-    main(args)
+    # Example usage:
+    # python inference.py path/to/data.csv
 
-python inference.py --model gb_model.pkl --input test.csv --output submission.csv
+    if len(sys.argv) < 2:
+        print("Usage: python inference.py <path_to_data.csv>")
+        sys.exit(1)
+
+    data_path = sys.argv[1]
+    model_path = "xgb_opt.json"
+
+    # Load your CTG-like data
+    data = pd.read_csv(data_path)
+
+    # ⚠️ Make sure to drop label columns if they exist
+    X = data.drop(columns=["target"], errors="ignore")
+
+    model = load_model(model_path)
+    preds = predict(model, X)
+
+    # Output predictions
+    print("Predictions:")
+    print(preds[:10])  # show first 10
+    np.savetxt("predictions.txt", preds, fmt="%d")
+    print("Saved predictions to predictions.txt")
