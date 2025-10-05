@@ -9,7 +9,7 @@ This repository includes
 
 : data_exploration_and_analysis.py file (show all analysis and pattern found)
 
-: baseline classifier to show all model that are trained based on cleaned data
+: baseline classifier to show all model that are trained without fine tuning 
 
 : xgb_opt.json for optimized model only
 
