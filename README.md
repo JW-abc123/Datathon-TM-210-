@@ -11,8 +11,8 @@ This repository includes
 
 : baseline classifier
 
-: training model file 
+: training model file (xgb_opt.json)
 
 : trained model weights
 
-: inference fuke
+: inference file
