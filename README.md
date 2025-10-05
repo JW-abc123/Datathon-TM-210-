@@ -7,7 +7,7 @@ This repository includes
 
 : academic report
 
-: data exploration+analysis file (show all analysis and pattern found)
+: data_exploration_and_analysis.py file (show all analysis and pattern found)
 
 : baseline classifier to show all model that are trained based on cleaned data
 
