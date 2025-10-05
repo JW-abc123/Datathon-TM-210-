@@ -11,7 +11,7 @@ This repository includes
 
 : baseline classifier to show all model that are trained without fine tuning 
 
-: xgb_opt.json for optimized model only
+: xgb_opt.json for optimized model only(trained model)
 
 : data_training.py for code that are used to train the model
 
