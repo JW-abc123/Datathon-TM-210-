@@ -16,3 +16,5 @@ This repository includes
 : data_training.py for code that are used to train the model
 
 : inference.py (if 1st file doesn't work)
+
+: gb_model.pkl (save model)
