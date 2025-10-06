@@ -7,13 +7,13 @@ This repository includes:
 
 1. Academic Report (Academic_Report.docx)
 
-2. Data_exploration_and_analysis.py file (show all analysis and pattern found)
+2. data_exploration_and_analysis.py file (show all analyses and patterns found)
 
-3. Baseline classifier to show all model that are trained without fine tuning 
+3. baseline_classifier.py containing our experimentations with various different models to select the best ones
 
-4. xgb_opt.json (main model) and xgb_base.json for containing model weights for inference
+4. xgb_opt.json (main model) and xgb_base.json containing model weights for inference
 
-5. data_training.py for code that are used to train the model
+5. data_training.py for code that was used to train the model
 
 6. inference.py (main inference file)
 
